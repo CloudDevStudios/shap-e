@@ -23,7 +23,7 @@ class BlenderViewData(ViewData):
         assert set("RGBA").issubset(
             set(self.channels)
         ), "The blender output should at least have RGBA images."
-        names = set(x.filename for x in self.zipfile.infolist())
+        names = {x.filename for x in self.zipfile.infolist()}
         for i in itertools.count():
             name = f"{i:05}.json"
             if name not in names:

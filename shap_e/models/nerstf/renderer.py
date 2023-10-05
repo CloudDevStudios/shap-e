@@ -151,7 +151,7 @@ class NeRSTFRenderer(RayRenderer, STFRendererBase):
         aux_losses = fine_results.output.aux_losses.copy()
         if self.separate_shared_samples:
             for key, val in coarse_results.output.aux_losses.items():
-                aux_losses[key + "_coarse"] = val
+                aux_losses[f"{key}_coarse"] = val
 
         channels = fine_results.output.channels
         shape = [1] * (channels.ndim - 1) + [len(self.texture_channels)]
